@@ -1,12 +1,21 @@
 import * as React from "react";
-import { ChakraProvider, Text } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { config } from "./config";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import Home from "./components/home";
+
+const client = new ApolloClient({
+  uri: config.apiUrl,
+  cache: new InMemoryCache(),
+});
+
 const App = () => {
   return (
-    <ChakraProvider>
-      <Text>Hey2</Text>
-      <Text>{JSON.stringify({ config: config })}</Text>
-    </ChakraProvider>
+    <ApolloProvider client={client}>
+      <ChakraProvider>
+        <Home />
+      </ChakraProvider>
+    </ApolloProvider>
   );
 };
 

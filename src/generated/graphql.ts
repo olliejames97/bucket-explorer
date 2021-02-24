@@ -4,16 +4,19 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: MyFileQuery
+// GraphQL query operation: FilesQuery
 // ====================================================
 
-export interface MyFileQuery_files {
+export interface FilesQuery_files {
   __typename: "File";
   name: string;
+  size: number | null;
+  lastModified: string | null;
+  link: string;
 }
 
-export interface MyFileQuery {
-  files: (MyFileQuery_files | null)[];
+export interface FilesQuery {
+  files: (FilesQuery_files | null)[];
 }
 
 /* tslint:disable */
