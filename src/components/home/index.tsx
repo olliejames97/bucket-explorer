@@ -48,7 +48,7 @@ const Home = () => {
         borderRadius={"16px"}
         flex={1}
         maxWidth={"700px"}
-        p={8}
+        p={[4, 8]}
         maxHeight={"95%"}
         overflowY={"scroll"}
         spacing={8}

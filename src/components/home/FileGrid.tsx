@@ -9,15 +9,21 @@ interface Props {
 
 type FieldName = keyof FilesQuery_files;
 const fieldSpans: Record<FieldName, BoxProps["gridColumn"]> = {
-  name: "span 5",
+  name: "span 4",
   lastModified: "span 3",
   size: "span 2",
-  link: "span 2",
+  link: "span 3",
   __typename: undefined,
 };
 export const FileGrid = ({ files }: Props) => {
   return (
-    <SimpleGrid columns={12} columnGap={2} pos="relative" w="100%">
+    <SimpleGrid
+      columns={12}
+      columnGap={2}
+      pos="relative"
+      w="100%"
+      fontSize={["xs", "l", "l"]}
+    >
       {(Object.keys(fieldSpans) as Array<FieldName>).map((title) =>
         fieldSpans[title] ? (
           <Text
@@ -26,6 +32,7 @@ export const FileGrid = ({ files }: Props) => {
             gridColumn={fieldSpans[title]}
             fontWeight={"bold"}
             textTransform={"uppercase"}
+            pb={0}
           >
             {title}
           </Text>
@@ -40,22 +47,22 @@ export const FileGrid = ({ files }: Props) => {
 
 const FileRow = ({ file }: { file: FilesQuery_files }) => (
   <>
-    <Box gridColumn={fieldSpans.name} overflow={"hidden"}>
+    <Box gridColumn={fieldSpans.name} overflow={"hidden"} pt={2}>
       <Text textOverflow={"ellipsis"} noOfLines={1}>
         {file.name}
       </Text>
     </Box>
-    <Box gridColumn={fieldSpans.lastModified} overflow={"hidden"}>
+    <Box gridColumn={fieldSpans.lastModified} overflow={"hidden"} pt={2}>
       <Text textOverflow={"ellipsis"} noOfLines={1}>
         {file.lastModified}
       </Text>
     </Box>
-    <Box gridColumn={fieldSpans.size} overflow={"hidden"}>
+    <Box gridColumn={fieldSpans.size} overflow={"hidden"} pt={2}>
       <Text textOverflow={"ellipsis"} noOfLines={1}>
         {file.size && filesize(file.size)}
       </Text>
     </Box>
-    <Box gridColumn={fieldSpans.link} overflow={"hidden"}>
+    <Box gridColumn={fieldSpans.link} overflow={"hidden"} pt={2}>
       <a href={file.link} download target={"_blank"} rel="noreferrer">
         <Button size="xs" colorScheme={"teal"}>
           Download
