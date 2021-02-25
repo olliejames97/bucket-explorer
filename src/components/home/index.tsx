@@ -52,19 +52,29 @@ const Home = () => {
         overflowY={"scroll"}
         spacing={8}
       >
-        <BucketSelector bucket={myBucket} onSet={setMyBucket} />
+        <BucketSelector
+          bucket={myBucket}
+          onSet={(b) => {
+            console.log(b);
+            setMyBucket(b);
+          }}
+        />
+        <hr />
 
         {loading && <Spinner alignSelf={"center"} />}
-        {data && data.files ? (
+        {data && data.files && (
           <FileGrid
             files={
               data.files.filter((e) => e !== null) as Array<FilesQuery_files>
             }
           />
-        ) : (
-          !loading && <Text>Error, no data</Text>
         )}
-        {error && <Text>Error: {error.message}</Text>}
+        {error && (
+          <Text>
+            Error, it is likely your bucket info is bad <br />
+            {error.message}
+          </Text>
+        )}
       </Stack>
     </Flex>
   );
