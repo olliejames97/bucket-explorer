@@ -19,6 +19,10 @@ export interface FilesQuery {
   files: (FilesQuery_files | null)[];
 }
 
+export interface FilesQueryVariables {
+  bucket?: CustomBucketParams | null;
+}
+
 /* tslint:disable */
 /* eslint-disable */
 // @generated
@@ -27,6 +31,13 @@ export interface FilesQuery {
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
+
+export interface CustomBucketParams {
+  bucketName: string;
+  region: string;
+  accessKeyId: string;
+  accessKeySecret: string;
+}
 
 //==============================================================
 // END Enums and Input Objects
