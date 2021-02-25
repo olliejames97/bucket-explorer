@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box, Flex, Spinner, Stack, Text } from "@chakra-ui/react";
+import { Flex, Spinner, Stack, Text } from "@chakra-ui/react";
 import { gql, useQuery } from "@apollo/client";
 import {
   FilesQuery,
@@ -8,8 +8,9 @@ import {
   CustomBucketParams,
 } from "../../generated/graphql";
 import { FileGrid } from "./FileGrid";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BucketSelector } from "./BucketSelector";
+
 const query = gql`
   query FilesQuery($bucket: CustomBucketParams) {
     files(bucket: $bucket) {
