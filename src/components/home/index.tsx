@@ -79,7 +79,9 @@ const Home = () => {
         )}
         {error && (
           <Text>
-            Error, it is likely your bucket info is bad <br />
+            Error, it is likely your bucket info is bad, or the user access ID /
+            secret do not have the relevant permissions. See error message
+            below: <br />
             {error.message}
           </Text>
         )}
