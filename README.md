@@ -5,7 +5,7 @@ Live here: https://frosty-hugle-afc89c.netlify.app/
 # Using a custom bucket
 
 1. On the site select the "change" button in the top right
-2. Enter relevant bucket info. in the panel, and press submit
+2. Enter relevant bucket details in the panel, and press submit. These details can be stored in localStorage by checking the "Remeber these details?" checkbox
 
 # Running Locally
 
