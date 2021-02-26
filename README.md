@@ -10,11 +10,13 @@ Live here: https://frosty-hugle-afc89c.netlify.app/
 # Running Locally
 
 1. `npm install`
-   2 Create ".env" in project root, with "REACT_APP_API_URL" eg:
+2. Create ".env" in project root, with "REACT_APP_API_URL" eg:
 
    ```
    REACT_APP_API_URL="https://kk1rtpcsn9.execute-api.eu-west-1.amazonaws.com/prod/graphql"
 
    ```
 
-2. `npm run start`
+   This will use the currently live API.
+
+3. `npm run start`

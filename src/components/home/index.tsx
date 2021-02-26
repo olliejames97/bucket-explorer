@@ -23,8 +23,9 @@ const query = gql`
 `;
 
 const Home = () => {
+  const storedBucketInfoString = localStorage.getItem("bucket");
   const [myBucket, setMyBucket] = useState<CustomBucketParams | undefined>(
-    undefined
+    storedBucketInfoString ? JSON.parse(storedBucketInfoString) : undefined
   );
   const { data, loading, error } = useQuery<FilesQuery, FilesQueryVariables>(
     query,
@@ -55,9 +56,15 @@ const Home = () => {
       >
         <BucketSelector
           bucket={myBucket}
-          onSet={(b) => {
-            console.log(b);
-            setMyBucket(b);
+          onSet={(bucket, shouldStore) => {
+            if (shouldStore) {
+              if (bucket) {
+                localStorage.setItem("bucket", JSON.stringify(bucket));
+              } else {
+                localStorage.removeItem("bucket");
+              }
+            }
+            setMyBucket(bucket);
           }}
         />
         <hr />

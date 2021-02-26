@@ -12,6 +12,7 @@ import {
   FormLabel,
   Input,
   FormControl,
+  Checkbox,
 } from "@chakra-ui/react";
 import { Field, FieldProps, Form, Formik } from "formik";
 
@@ -19,7 +20,7 @@ export const BucketSelector = ({
   bucket,
   onSet,
 }: {
-  onSet: (bucket: CustomBucketParams | undefined) => void;
+  onSet: (bucket: CustomBucketParams | undefined, shouldStore: boolean) => void;
   bucket: CustomBucketParams | undefined;
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -43,17 +44,20 @@ export const BucketSelector = ({
             <Formik
               initialValues={
                 bucket
-                  ? bucket
+                  ? { ...bucket, shouldStore: false }
                   : {
                       bucketName: "",
                       region: "",
                       accessKeyId: "",
                       accessKeySecret: "",
+                      shouldStore: false,
                     }
               }
               onSubmit={(d) => {
+                const { shouldStore, ...bucket } = d;
                 onClose();
-                onSet(d);
+
+                onSet(bucket, shouldStore);
               }}
             >
               <Form>
@@ -102,6 +106,18 @@ export const BucketSelector = ({
                     </FormControl>
                   )}
                 </Field>
+
+                <Field name="shouldStore">
+                  {({ field }: FieldProps<string>) => (
+                    <FormControl pb={4}>
+                      <FormLabel htmlFor="should store">
+                        Remember these details?
+                      </FormLabel>
+                      <Checkbox {...field} id="shouldStore" placeholder="XYZ" />
+                    </FormControl>
+                  )}
+                </Field>
+
                 <FormControl pb={4}>
                   <Button
                     m={2}
@@ -109,7 +125,7 @@ export const BucketSelector = ({
                     display="inline"
                     onClick={() => {
                       onClose();
-                      onSet(undefined);
+                      onSet(undefined, true);
                     }}
                   >
                     Reset
