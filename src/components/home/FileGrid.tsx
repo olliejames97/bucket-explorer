@@ -63,8 +63,14 @@ const FileRow = ({ file }: { file: FilesQuery_files }) => (
       </Text>
     </Box>
     <Box gridColumn={fieldSpans.link} pt={2}>
-      <a href={file.link} download target={"_blank"} rel="noreferrer">
-        <Button size="xs" colorScheme={"teal"}>
+      <a
+        href={file.link}
+        download
+        target={"_blank"}
+        rel="noreferrer"
+        data-cy="DownloadAnchor"
+      >
+        <Button size="xs" colorScheme={"teal"} data-cy="DownloadButton">
           Download
         </Button>
       </a>
