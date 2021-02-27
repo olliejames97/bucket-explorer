@@ -28,12 +28,17 @@ export const BucketSelector = ({
   return (
     <>
       <HStack w="100%" justifyContent={"flex-end"}>
-        <Text>
+        <Text data-cy="SelectedBucketText">
           {bucket
             ? `Using custom bucket: ${bucket.bucketName}`
             : "Using API's default bucket"}
         </Text>
-        <Button colorScheme="pink" size="sm" onClick={onOpen}>
+        <Button
+          data-cy="ChangeBucketButton"
+          colorScheme="pink"
+          size="sm"
+          onClick={onOpen}
+        >
           Change
         </Button>
       </HStack>
@@ -113,7 +118,12 @@ export const BucketSelector = ({
                       <FormLabel htmlFor="should store">
                         Remember these details?
                       </FormLabel>
-                      <Checkbox {...field} id="shouldStore" placeholder="XYZ" />
+                      <Checkbox
+                        {...field}
+                        id="shouldStore"
+                        placeholder="XYZ"
+                        data-cy="ShouldStoreCheckbox"
+                      />
                     </FormControl>
                   )}
                 </Field>
@@ -123,6 +133,7 @@ export const BucketSelector = ({
                     m={2}
                     colorScheme="pink"
                     display="inline"
+                    data-cy="ClearButton"
                     onClick={() => {
                       onClose();
                       onSet(undefined, true);
@@ -130,7 +141,13 @@ export const BucketSelector = ({
                   >
                     Reset
                   </Button>
-                  <Button mt={4} colorScheme="teal" type="submit" m={2}>
+                  <Button
+                    mt={4}
+                    colorScheme="teal"
+                    type="submit"
+                    m={2}
+                    data-cy="SubmitButton"
+                  >
                     Submit
                   </Button>
                 </FormControl>
