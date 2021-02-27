@@ -10,7 +10,7 @@ Live here: https://frosty-hugle-afc89c.netlify.app/
 # Running Locally
 
 1. `npm install`
-2. Create ".env" in project root, with "REACT_APP_API_URL" eg:
+2. Create ".env" in project root, with "REACT_APP_API_URL", the URL of the bucket-explorer-api's graphql server eg:
 
    ```
    REACT_APP_API_URL="https://kk1rtpcsn9.execute-api.eu-west-1.amazonaws.com/prod/graphql"
